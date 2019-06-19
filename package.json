@@ -1,0 +1,27 @@
+{
+  "name": "JavaScript-Snippets",
+  "version": "1.0.0",
+  "description": "Snippets of a sexy language.",
+  "main": "ES6_iterator.js",
+  "dependencies": {
+    "intelli-espower-loader": "^1.0.1",
+    "power-assert": "^1.6.1"
+  },
+  "devDependencies": {
+    "mocha": "^6.0.2"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/freezehacker/JavaScript-Snippets.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/freezehacker/JavaScript-Snippets/issues"
+  },
+  "homepage": "https://github.com/freezehacker/JavaScript-Snippets#readme"
+}

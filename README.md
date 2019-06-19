@@ -1,2 +1,3 @@
-# javascript-snippet
-JavaScript snippets and basic knowledge points.
+# JavaScript-Snippets
+
+Snippets of a sexy language.
