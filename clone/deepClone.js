@@ -48,8 +48,7 @@ function deepCloneByRecursion (src, hash = new WeakMap()) {
  * 则可以用循环对其`BFS`
  */
 function deepCloneByIteration (srcObject, mapping = new WeakMap()) {
-  // 这里设置dummy结点的原因是：
-  // 将根根结点设置为 Object 类型，不必再进行判断
+  // 这里设置dummy结点的原因是：将根根结点设置为 Object 类型，不必再进行判断（原根对象的类型不明确，可能是数组）
   const srcDummy = { root: srcObject }
   const destDummy = {}
 
@@ -69,9 +68,11 @@ function deepCloneByIteration (srcObject, mapping = new WeakMap()) {
     if (type === 'Object') {
       // 目标结点增加子结点（对象类型），此时还“没有内容”
       const destCurrent = {}
-      destParent[key] = destCurrent
+
       // 建立映射，解决循环引用
       mapping.set(srcCurrent, destCurrent)
+
+      destParent[key] = destCurrent
       // 源结点发散
       for (const k of Reflect.ownKeys(srcCurrent)) {
         queue.push(new Node(srcCurrent, destCurrent, k, srcCurrent[k]))
@@ -79,9 +80,11 @@ function deepCloneByIteration (srcObject, mapping = new WeakMap()) {
     } else if (type === 'Array') {
       // 目标结点增加结点（数组类型），此时也是“空”的
       const destCurrent = []
-      destParent[key] = destCurrent
+
       // 建立映射，解决循环引用
       mapping.set(srcCurrent, destCurrent)
+
+      destParent[key] = destCurrent
       // 源结点发散
       for (let i = 0; i < srcCurrent.length; ++i) {
         if (srcCurrent.hasOwnProperty(i)) {
