@@ -1,1 +1,1 @@
-require('./实现curry/test')
+require('./实现Promise/easy-promise/test2')

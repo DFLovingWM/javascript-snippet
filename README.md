@@ -1,3 +1,3 @@
-# JavaScript-Snippets
+# JavaScript代码片段
 
-Snippets of a sexy language.
+好玩的知识点、面试考点整理。
