@@ -1,1 +1,1 @@
-require('./实现Promise/easy-promise/test2')
+require('./变量提升/index')
