@@ -4,7 +4,7 @@
  * @param {Function} 将数据生成Promise的函数
  * @param {number} concurrency 最大并发数
  */
-Promise.map = Promise.map || function (array, mapper, concurrency) {
+module.exports = function map (array, mapper, concurrency) {
   array = array.slice()
   const n = array.length
 

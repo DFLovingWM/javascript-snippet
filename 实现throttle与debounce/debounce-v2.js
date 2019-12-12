@@ -2,13 +2,13 @@
  * 浏览器中，也可以使用`requestAnimationFrame`实现
  */
 function debounce (fn) {
-  let requestId = null
+  let id = null
 
   return function newFn () {
-    if (requestId !== null) {
-      cancelAnimationFrame(requestId)
+    if (id !== null) {
+      cancelAnimationFrame(id)
     }
-    requestId = requestAnimationFrame(fn)
+    id = requestAnimationFrame(fn)
   }
 }
 

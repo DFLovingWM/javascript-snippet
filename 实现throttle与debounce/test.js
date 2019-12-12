@@ -1,17 +1,22 @@
+// const {
+//   throttle,
+//   debounce,
+// } = require('./underscore');
 const throttle = require('./throttle');
 const debounce = require('./debounce');
 
-function log (sth) {
-  console.log('Log: ' + sth)
+const log = sth => {
+  console.log('Log:', sth)
 }
 
-const log2 = throttle(log, 2000)
-const log3 = debounce(log, 1000)
+const throttleLog = throttle(log, 1000, { leading: true, trailing: false })
+const debounceLog = debounce(log, 1000, false)
 
 const readline = require('readline')
 readline.createInterface({
   input: process.stdin,
   output: process.stdout,
 }).on('line', line => {
-  log3(line)
+  // throttleLog(line)
+  debounceLog(line)
 })
