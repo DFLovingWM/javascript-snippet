@@ -3,7 +3,7 @@
  */
 function throttle (fn, wait = 1000, { leading = true, trailing = true }) {
   let timer = null // 当前定时器
-  let prev = 0 // 上一次执行的时间
+  let prev = 0 // 上一次执行的时间戳
   let context, inArgs, outArgs // 上下文、入参、出参（拉出来作为全局变量，是为了可以更新）
   
   function throttled (...args) {

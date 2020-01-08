@@ -1,25 +1,12 @@
-/**
- * 递归实现(版本1)
- */
-function curry (fn) {
-  let args = [] // 存放所有参数
+module.exports = function curry (fn, initArgs = []) {
 
-  // 递归函数
-  function helper (...someArgs) {
-    args = args.concat(someArgs)
-
-    // （递归树叶子结点）参数数量到达形参数量，则求值
-    if (args.length === fn.length) {
-      const res = fn.apply(this, args)
-      args = [] // 清空参数
-      return res
+  function newFn (...args) {
+    const newArgs = initArgs.concat(args); // 整合参数（需要注意，禁止mutate任何参数数组，即避免副作用）
+    if (newArgs.length>= fn.length) { // 如果达到形参数量，则调用
+      return fn.apply(this, newArgs);
     }
-
-    // （递归树非叶子结点）继续延迟
-    return helper
+    return curry(fn, newArgs); // 否则增加实参后继续递归
   }
 
-  return helper
-}
-
-module.exports = curry
+  return newFn
+};

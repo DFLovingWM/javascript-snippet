@@ -10,16 +10,16 @@ function debounce (fn, wait = 100, immediate = false) {
   let result
 
   function debounced (...args) {
-    // 先取消当前wait阶段
+    // 无论是哪一种，都先取消当前wait阶段
     clearTimeout(timer)
 
     if (immediate) {
       // 如果没有定时器，则立即执行
       if (timer === null) result = fn.apply(this, args)
       // 因为上面已经执行了，所以timeout中不能再执行
-      // 但要表示“正在进行wait阶段”，所以给一个空的timeout占位
+      // 但要给一个空的timeout占位，表示“wait阶段”
       timer = setTimeout(() => {
-        timer = null
+        timer = null // 将timeout置空，表示wait阶段结束了
       }, wait)
     } else {
       // 延迟执行

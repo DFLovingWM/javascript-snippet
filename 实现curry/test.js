@@ -1,12 +1,9 @@
-const curry = require('./curry-v2');
+const curry = require('./curry');
 
-function add (a, b, c) {
-  console.log(a + b + c)
-}
+var add = curry((a, b, c) => a + b + c);
 
-add = curry(add)
+var add3 = add(1, 2);
+var add4 = add(4);
 
-add(1,2,3)
-add(1)(2)(3)
-add(1,2)(4)
-add(1)(2,4)
+console.log(add3(10)); // 13
+console.log(add4(14, 6)); // 24
