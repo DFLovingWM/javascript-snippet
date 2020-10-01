@@ -69,3 +69,7 @@
   - 实时刷新
   - 热更新
 - 优化包质量
+  - Tree Shaking特性：移除死代码
+  - splitChunk属性：提取公共代码
+  - 按需加载
+  - ModuleConcatenationPlugin：模块连接/Scope hoisting

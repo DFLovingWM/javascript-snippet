@@ -33,10 +33,10 @@
 - 刷新页面
 - 拷贝URL，在新Tab中直接跳转
 
-URL会报`404 Not Found`。因为应用是SPA，当前URL是经过前端跳转形成的，所以Nginx无法根据当前URL找到应用入口，用户无法进入应用。
+URL会报`404 Not Found`。因为应用是SPA，当前URL是经过前端跳转形成的，导致Nginx无法匹配，导致404。
 
-解决方案：
+解决方案：实现自己的404页面，而不是使用浏览器默认的。
 
-- Webpack
-- Nginx
-- 后端
+- （开发时）Webpack DevServer：`historyApiFallback`可以设置代替404的页面，使用`rewrite`可以正则匹配。
+- Nginx：配置`try_files`或`error_page 404`
+- 后端：配置404重定向页面
